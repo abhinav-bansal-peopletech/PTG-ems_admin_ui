@@ -1,20 +1,15 @@
-import logo from '../../Assets/logo.svg';
 import './EmployeeList.css';
-import { Link } from "react-router-dom";
+import EmployeeListTableComponent from '../../Components/EmployeeListComponent/EmployeeListTableComponent';
+import EmployeeListNavbar from '../../Components/EmployeeListComponent/EmployeeListNavbar';
+import EmployeeListSearch from '../../Components/EmployeeListComponent/EmployeeListSearch';
 
 function EmployeeList() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Employee List Screen
-        </p>
-        <Link to="/dashboard">
-          Dashboard Screen
-        </Link>
-      </header>
-    </div>
+    <>
+        <EmployeeListNavbar/>
+        <EmployeeListSearch/>
+        <EmployeeListTableComponent/>
+    </>
   );
 }
 

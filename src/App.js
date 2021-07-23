@@ -1,4 +1,5 @@
 import './App.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import { HashRouter, Redirect, Route, Switch } from "react-router-dom";
 import Dashboard from './Pages/Dashboard/Dashboard';
 import EmployeeList from './Pages/EmployeeList/EmployeeList';
