@@ -9,7 +9,6 @@ import TagCloudComponent from '../../Components/DashboardComponent/TagCloudCompo
 function Dashboard() {
   return (
     <>
-        <body>
           <header><HeaderComponent/></header>
           <nav><SideMenuComponent/></nav>
           <section className="section1">
@@ -21,8 +20,6 @@ function Dashboard() {
           <section className="section3">
             <TagCloudComponent/>
           </section>
-        </body>
-        
         {/*<section>
           <Link to="/employeelist">
             Employee List Screen
