@@ -1,6 +1,7 @@
 import React from 'react'
 import { useState } from 'react'
 import MenuItemComponent from './MenuItemComponent'
+import { Link } from 'react-router-dom'
 import './CSS/SideMenuComponent.css'
 
 export default function SideMenuComponent() {
@@ -8,7 +9,7 @@ export default function SideMenuComponent() {
 
     const itemList = [
         {
-            text: 'Dashboard',
+            text: <Link  className="link" to="/">Dashboard</Link>,
             logo:  <i className="bi bi-speedometer2"></i>
         },
         {
@@ -16,19 +17,19 @@ export default function SideMenuComponent() {
             logo: <i className="bi bi-person-circle"></i>
         },
         {
-            text: 'Applications',
+            text: <Link className="link" to="/applications">Applications</Link>,
             logo: <i className="bi bi-app-indicator"></i>
         },
         {
-            text: 'Screenshots',
+            text: <Link className="link" to="/screenshots">Screenshots</Link>,
             logo: <i className="bi bi-fullscreen"></i>
         },
         {
-            text: 'Network',
+            text: <Link className="link" to="/network">Network</Link>,
             logo: <i className="bi bi-cloud"></i>
         },
         {
-            text: 'Files',
+            text: <Link className="link" to="/files">Files</Link>,
             logo: <i className="bi bi-file-earmark"></i>
         },
         {
@@ -69,6 +70,11 @@ export default function SideMenuComponent() {
                             key={index}
                             name = {item.text}
                             logo = {item.logo}
+                            onClick={() => {
+                                if(inactive){
+                                    setInactive(false);
+                                }
+                            }}
                         />
                     ))}
                 </ul>

@@ -1,17 +1,16 @@
 import React from 'react'
 
 export default function MenuItemComponent(props) {
-    const {name, logo} = props
+    const {name, logo, onClick} = props
     return (
         <>
-            <li>    
-                <a href="#one" className="menu-item" >
-                        <div className="menu-icon">
-                            {logo}
-                        </div>
+            <li onClick={props.onClick} className="menu-item">   
+                    <div className="menu-icon">
+                        {logo}
+                    </div>
                     <span>{name}</span>
-                </a>
             </li>
+
         </>
     )
 }
