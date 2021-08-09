@@ -26,15 +26,15 @@ function Dashboard() {
                 <div className="col-md-4 mb-3">
                   <div className="card bg-primary text-dark mb-3">
                     <div className="card-body py-5">
-                        <h5 className="card-title">Productive Time</h5>
-                        <p className="card-text">{new Date().toLocaleTimeString([], {hour: '2-digit', minute: "2-digit"})}</p>
+                        <h5 className="card-title text-center">Productive Time</h5>
+                        <p className="card-text text-center">{new Date().toLocaleTimeString([], {hour: '2-digit', minute: "2-digit"})}</p>
                     </div>
                   </div>
 
                   <div className="card bg-danger text-dark">
                     <div className="card-body py-5">
-                        <h5 className="card-title">Idle Time</h5>
-                        <p className="card-text">{new Date().toLocaleTimeString([], {hour: '2-digit', minute: "2-digit"})}</p>
+                        <h5 className="card-title text-center" >Idle Time</h5>
+                        <p className="card-text text-center">{new Date().toLocaleTimeString([], {hour: '2-digit', minute: "2-digit"})}</p>
                     </div>
                   </div>
                 </div>
