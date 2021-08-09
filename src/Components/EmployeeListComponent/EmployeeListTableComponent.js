@@ -1,14 +1,12 @@
 import React from 'react'
 import { useEffect, useState } from 'react'
-import Axios from "axios"
+import ApiManager from '../../Api/ApiManager'
 import { Link } from 'react-router-dom'
 
 export default function EmployeeListComponent(props) {
-    const apiUrl = "http://127.0.0.1:5000/api/get-users-list"
     const [userData, setData] = useState([])
-
     const apiGet = () => {
-        Axios.get(apiUrl).then((response) => {
+        ApiManager.get("/get-users-list").then((response) => {
             setData(response.data.data)
         })
     }
