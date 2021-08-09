@@ -26,6 +26,7 @@ const data = [
 export default function TagCloudComponent() {
     return (
         <>
+        <div>
             <TagCloud
                 minSize={12}
                 maxSize={35}
@@ -33,6 +34,7 @@ export default function TagCloudComponent() {
                 className="simple-cloud"
                 onClick={tag => alert(`'${tag.value}' Count: ${tag.count}`)}
             />
+        </div>    
         </>
     )
 }

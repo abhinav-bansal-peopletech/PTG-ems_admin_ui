@@ -1,6 +1,5 @@
 import React from 'react'
 import ApplicationActivityChart from '../DashboardComponent/ApplicationActivityChartComponent'
-import './CSS/ApplicationChart.css'
 
 export default function ApplicationChart() {
     return (

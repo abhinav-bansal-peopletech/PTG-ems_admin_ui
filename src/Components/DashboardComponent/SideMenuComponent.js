@@ -1,84 +1,67 @@
 import React from 'react'
-import { useState } from 'react'
 import MenuItemComponent from './MenuItemComponent'
-import { Link } from 'react-router-dom'
-import './CSS/SideMenuComponent.css'
-
-export default function SideMenuComponent() {
-    const [inactive, setInactive] = useState(false)
 
     const itemList = [
         {
-            text: <Link  className="link" to="/">Dashboard</Link>,
-            logo:  <i className="bi bi-speedometer2"></i>
+            text: 'Dashboard',
+            logo:  <i className="bi bi-speedometer2"></i>,
+            to: '/dashboard'
         },
         {
-            text: 'Profile',
-            logo: <i className="bi bi-person-circle"></i>
+            text: 'Applications',
+            logo: <i className="bi bi-app-indicator"></i>,
+            to: '/applications'
         },
         {
-            text: <Link className="link" to="/applications">Applications</Link>,
-            logo: <i className="bi bi-app-indicator"></i>
+            text: 'Screenshots',
+            logo: <i className="bi bi-fullscreen"></i>,
+            to: '/screenshots'
         },
         {
-            text: <Link className="link" to="/screenshots">Screenshots</Link>,
-            logo: <i className="bi bi-fullscreen"></i>
+            text: 'Network',
+            logo: <i className="bi bi-cloud"></i>,
+            to: '/network'
         },
         {
-            text: <Link className="link" to="/network">Network</Link>,
-            logo: <i className="bi bi-cloud"></i>
-        },
-        {
-            text: <Link className="link" to="/files">Files</Link>,
-            logo: <i className="bi bi-file-earmark"></i>
+            text: 'Files',
+            logo: <i className="bi bi-file-earmark"></i>,
+            to: '/files'
         },
         {
             text: 'Clipboard',
-            logo: <i className="bi bi-clipboard"></i>
+            logo: <i className="bi bi-clipboard"></i>,
+            to: '/clipboard'
         },
         {
             text: 'Session',
-            logo: <i className="bi bi-binoculars"></i>
+            logo: <i className="bi bi-binoculars"></i>,
+            to: '/session'
         }
     ]
 
+export default function SideMenuComponent() {
+
     return (
-        <div className={`side-menu ${inactive ? 'inactive': ''}`}>
-            <div className="top-section">
-                <div className="logo">
-                    <img src="#" alt="logo"/>
-                </div>
-                <div className="toggle-menu-btn" onClick={() => setInactive(!inactive)}>
-                    {inactive ? (<i class="bi bi-arrow-left-square-fill"></i>):
-                     (<i className="bi bi-arrow-right-square-fill"></i>)}
-                </div>    
-            </div>
-
-            <div className="search-controller">
-                <button className="search-btn">
-                    <i className="bi bi-search"></i>
-                </button>
-                <input type="date" placeholder="search"/>
-            </div>
-
-            <div className="divider"></div>
-
-            <div className="main-menu">
-                <ul>
-                    {itemList.map((item, index) => (
+        <div
+        className="offcanvas offcanvas-start sidebar-nav bg-dark"
+        tabIndex="-1"
+        id="sidebar"
+        >
+        <div className="offcanvas-body p-0">
+            <nav className="navbar-dark">
+            <ul className="navbar-nav">
+                      {itemList.map((item, index) => (
                         <MenuItemComponent
                             key={index}
                             name = {item.text}
                             logo = {item.logo}
-                            onClick={() => {
-                                if(inactive){
-                                    setInactive(false);
-                                }
-                            }}
+                            to = {item.to}
                         />
-                    ))}
-                </ul>
-            </div>
+                    ))}                
+                  </ul>
+            </nav>
+        </div>
         </div>
     )
+
 }

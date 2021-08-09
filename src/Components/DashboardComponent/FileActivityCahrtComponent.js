@@ -73,7 +73,7 @@ export default function FileActivityChart() {
                                     }
                                 }}
                             />
-                    </Card>
+                            </Card>
         </>
     )
 }

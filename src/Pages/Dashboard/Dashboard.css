@@ -1,28 +1,43 @@
-*{
-    margin: 0;
-    padding: 0;
-}
-
-body{
-    background-color: white;
-}
-
-.section1{
-    padding-left: 260px;
-    margin-right: 10px;
-    padding-top: 10px;
-}
-
-.section2{
-    padding-left: 260px;
-    margin-right: 10px;
-    padding-top: 0;
-}
-
-.section3{
-    padding-left: 270px;
-    padding-right: 10px;
-    padding-top: 0;
-    margin-top: 0;
-}
-
+:root {
+    --offcanvas-width: 250px;
+    --topNavbarHeight: 56px;
+  }
+  .sidebar-nav {
+    width: var(--offcanvas-width);
+  }
+  .sidebar-link {
+    display: flex;
+    align-items: center;
+  }
+  .sidebar-link .right-icon {
+    display: inline-flex;
+  }
+  .sidebar-link[aria-expanded="true"] .right-icon {
+    transform: rotate(180deg);
+  }
+  .simple-cloud {
+    cursor: pointer;
+    display: inline;
+  }
+  .dsbtn {
+    height: 32px;
+  }
+  @media (min-width: 992px) {
+    body {
+      overflow: auto !important;
+    }
+    main {
+      margin-left: var(--offcanvas-width);
+    }
+    /* this is to remove the backdrop */
+    .offcanvas-backdrop::before {
+      display: none;
+    }
+    .sidebar-nav {
+      -webkit-transform: none;
+      transform: none;
+      visibility: visible !important;
+      height: calc(100% - var(--topNavbarHeight));
+      top: var(--topNavbarHeight);
+    }
+  }

@@ -1,0 +1,33 @@
+.form-container{
+    position: absolute;
+    top: 15vh;
+    background: #fff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px 0px #000;
+}
+
+.Lbtn {
+  font-size: 16px;
+  border: 10px;
+  outline: none;
+  color: white;
+  padding: 14px 16px;
+  background-color: inherit;
+  font-family: inherit;
+  margin-top: 4px;
+  width: 100%;
+}
+
+.Lbtn {
+    background-color: blue;
+  }
+  .button{
+    color: white;
+  }
+
+.link{
+  direction: none;
+  color: #fff;
+}
+
