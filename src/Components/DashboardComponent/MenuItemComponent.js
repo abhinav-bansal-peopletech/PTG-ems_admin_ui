@@ -1,17 +1,18 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 export default function MenuItemComponent(props) {
-    const {name, logo} = props
+    const {name, logo, to} = props
+
     return (
         <>
-            <li>    
-                <a href="#one" className="menu-item" >
-                        <div className="menu-icon">
-                            {logo}
-                        </div>
+            <li> 
+                <Link exact="true" to={to} className="nav-link px-3">  
+                    <span className="me-2">{logo}</span>
                     <span>{name}</span>
-                </a>
+                </Link>
             </li>
+
         </>
     )
 }

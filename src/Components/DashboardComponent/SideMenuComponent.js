@@ -1,78 +1,67 @@
 import React from 'react'
-import { useState } from 'react'
 import MenuItemComponent from './MenuItemComponent'
-import './CSS/SideMenuComponent.css'
-
-export default function SideMenuComponent() {
-    const [inactive, setInactive] = useState(false)
 
     const itemList = [
         {
             text: 'Dashboard',
-            logo:  <i className="bi bi-speedometer2"></i>
-        },
-        {
-            text: 'Profile',
-            logo: <i className="bi bi-person-circle"></i>
+            logo:  <i className="bi bi-speedometer2"></i>,
+            to: '/dashboard'
         },
         {
             text: 'Applications',
-            logo: <i className="bi bi-app-indicator"></i>
+            logo: <i className="bi bi-app-indicator"></i>,
+            to: '/applications'
         },
         {
             text: 'Screenshots',
-            logo: <i className="bi bi-fullscreen"></i>
+            logo: <i className="bi bi-fullscreen"></i>,
+            to: '/screenshots'
         },
         {
             text: 'Network',
-            logo: <i className="bi bi-cloud"></i>
+            logo: <i className="bi bi-cloud"></i>,
+            to: '/network'
         },
         {
             text: 'Files',
-            logo: <i className="bi bi-file-earmark"></i>
+            logo: <i className="bi bi-file-earmark"></i>,
+            to: '/files'
         },
         {
             text: 'Clipboard',
-            logo: <i className="bi bi-clipboard"></i>
+            logo: <i className="bi bi-clipboard"></i>,
+            to: '/clipboard'
         },
         {
             text: 'Session',
-            logo: <i className="bi bi-binoculars"></i>
+            logo: <i className="bi bi-binoculars"></i>,
+            to: '/session'
         }
     ]
 
+export default function SideMenuComponent() {
+
     return (
-        <div className={`side-menu ${inactive ? 'inactive': ''}`}>
-            <div className="top-section">
-                <div className="logo">
-                    <img src="#" alt="logo"/>
-                </div>
-                <div className="toggle-menu-btn" onClick={() => setInactive(!inactive)}>
-                    {inactive ? (<i class="bi bi-arrow-left-square-fill"></i>):
-                     (<i className="bi bi-arrow-right-square-fill"></i>)}
-                </div>    
-            </div>
-
-            <div className="search-controller">
-                <button className="search-btn">
-                    <i className="bi bi-search"></i>
-                </button>
-                <input type="date" placeholder="search"/>
-            </div>
-
-            <div className="divider"></div>
-
-            <div className="main-menu">
-                <ul>
-                    {itemList.map((item, index) => (
+        <div
+        className="offcanvas offcanvas-start sidebar-nav bg-dark"
+        tabIndex="-1"
+        id="sidebar"
+        >
+        <div className="offcanvas-body p-0">
+            <nav className="navbar-dark">
+            <ul className="navbar-nav">
+                      {itemList.map((item, index) => (
                         <MenuItemComponent
                             key={index}
                             name = {item.text}
                             logo = {item.logo}
+                            to = {item.to}
                         />
-                    ))}
-                </ul>
-            </div>
+                    ))}                
+                  </ul>
+            </nav>
+        </div>
         </div>
     )
+
 }

@@ -1,6 +1,5 @@
 import React from 'react'
 import { Doughnut } from 'react-chartjs-2';
-import {Card} from 'react-bootstrap'
 
 export default function ActiveIdleChart() {
 
@@ -29,9 +28,9 @@ const options ={
 
     return (
         <>
-            <Card className="AICard justify-content-center">
+          <div>
                 <Doughnut data={data} options={options} />
-            </Card>
+          </div>
         </>
     )
 }
