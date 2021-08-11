@@ -1,14 +1,25 @@
 import React from 'react'
+import { useEffect, useState } from 'react'
+import ApiManager from '../../Api/ApiManager'
 
-export default function FilesTableComponent() {
+export default function FilesTableComponent(props) {
+    const [filesData, setFilesData] = useState([])
+    const apiGet = () => {
+        const request = JSON.stringify({date:"08/07/2021"})
+        ApiManager.get("user-report/6/files-data", {params: request }).then((response) => {
+            console.log(response.data.data.fileData)
+            setFilesData(response.data.data.fileData)
+        })
+    }
+    useEffect(() => {
+        console.log("Done")
+        apiGet();
+    }, []);
     return (
         <>
         <div className="row">
           <div className="col-md-12 mb-3">
             <div className="card">
-              <div className="card-header">
-                 <span><i className="bi bi-table me-2"></i></span> Data Table
-                    </div>
                         <div className="card-body">
                             <div className="table-responsive">
                                 <table
@@ -24,16 +35,15 @@ export default function FilesTableComponent() {
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                        <td>xyz.txt</td>
-                                        <td>Open</td>
-                                        <td>2021-07-19T20:15:00+05:30</td>
-                                        </tr>
-                                        <tr>
-                                        <td>xyz.txt</td>
-                                        <td>Closed</td>
-                                        <td>2021-07-19T20:15:00+05:30</td>
-                                        </tr>
+                                    {filesData.map((item, index) => {
+                                                    return(
+                                                        <tr key={index}>
+                                                            <td>{item.files}</td>
+                                                            <td>{item.action}</td>
+                                                            <td>{item.timeStamp}</td>
+                                                        </tr> 
+                                                    )
+                                            })} 
                                     </tbody>
                                 </table>
                             </div>

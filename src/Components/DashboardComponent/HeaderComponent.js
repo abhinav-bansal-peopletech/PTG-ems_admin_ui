@@ -36,9 +36,6 @@ export default function HeaderComponent() {
                 <form className="d-flex ms-auto my-3 my-lg-0">
                     <div className="input-group">
                         <SearchDateComponent/>
-                    <button className="btn btn-primary dsbtn" type="submit">
-                        <i className="bi bi-search"></i>
-                    </button>
                     </div>
                 </form>
                 </div>

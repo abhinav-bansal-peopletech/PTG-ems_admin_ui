@@ -17,7 +17,7 @@ export default function Network() {
                     <div className="card h-100">
                         <div className="card-header">
                         <span className="me-2"><i className="bi bi-bar-chart-fill"></i></span>
-                        Files
+                        Network
                         </div>
                         <div className="card-body">
                             <TagCloudComponent/>
