@@ -43,7 +43,7 @@ export default function EmployeeListComponent(props) {
                                                         <td>{item.machineName}</td>
                                                         <td>{item.registeredOwner}</td>
                                                         <td>{item.publicIP}</td>
-                                                        <td>{item.macAddr}</td>
+                                                        <td>{item.macAddress}</td>
                                                     </tr> 
                                                     )
                                                 })}                                  
