@@ -6,6 +6,7 @@ export default function MenuItemComponent(props) {
 
     return (
         <>
+            <li className="my-2"><hr className="dropdown-divider bg-light" /></li>
             <li> 
                 <Link exact="true" to={to} className="nav-link px-3">  
                     <span className="me-2">{logo}</span>

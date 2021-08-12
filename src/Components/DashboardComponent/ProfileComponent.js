@@ -1,6 +1,20 @@
 import React from 'react'
+import { useEffect, useState } from 'react'
+import ApiManager from '../../Api/ApiManager'
 
 export default function ProfileComponent() {
+    const [profileData, setProfileData] = useState([])
+    const apiGet = () => {
+        const request = JSON.stringify({date:"08/07/2021"})
+        ApiManager.get("user-report/6/basic-info", {params: request }).then((response) => {
+            console.log(response.data.data)
+            setProfileData(response.data.data)
+        })
+    }
+    useEffect(() => {
+        console.log("Done")
+        apiGet();
+    }, []);
     return (
         <>
             <div className="card bg-info">
@@ -10,11 +24,11 @@ export default function ProfileComponent() {
                 <div className="card-body">
                     <h6 className="card-title text-center">User Profile</h6>
                     <ul>
-                        <li>IP Address</li>
-                        <li>Machine Name</li>
-                        <li>Status</li>
-                        <li>MAC Address</li>
-                        <li>Registered Owner</li>
+                        <li>User Id: {profileData.userId}</li>
+                        <li>IP Address: {profileData.publicIP}</li>
+                        <li>Machine Name: {profileData.machineName}</li>
+                        <li>MAC Address: {profileData.macAddress}</li>
+                        <li>Registered Owner: {profileData.registeredOwner}</li>
                     </ul>
                 </div>
             </div>

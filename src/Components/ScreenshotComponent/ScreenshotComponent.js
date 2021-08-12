@@ -1,46 +1,43 @@
 import React from 'react'
-import image1 from '../../Assets/image1.png'
-import image2 from '../../Assets/image2.png'
-import image3 from '../../Assets/image3.png' 
+import "react-responsive-carousel/lib/styles/carousel.min.css"; 
+import { Carousel } from 'react-responsive-carousel';
+import { useEffect, useState } from 'react'
+import ApiManager from '../../Api/ApiManager'
 
 export default function ScreenshotComponent() {
+    const [screenShotData, setScreenShotData] = useState([])
+    const apiGet = () => {
+        const request = JSON.stringify({date:"08/07/2021"})
+        ApiManager.get("user-report/6/screenshot-data", {params: request } ).then((response) => {
+            console.log(response.data.data)
+            setScreenShotData(response.data.data)
+        })
+    }
+    useEffect(() => {
+        console.log("Done")
+        apiGet();
+    }, []);
     return (
         <>
-            <div id="carouselExampleCaptions" className="carousel slide" data-bs-ride="carousel">
-                <div className="carousel-indicators">
-                    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" className="active" aria-current="true" aria-label="Slide 1"></button>
-                    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
-                    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
-                </div>
-                <div className="carousel-inner">
-                    <div className="carousel-item active">
-                    <img src={image1} className="d-block w-100" alt="..."/>
-                    <div className="carousel-caption d-none d-md-block">
-                        <h5>{new Date().toLocaleTimeString([], {hour: '2-digit', minute: "2-digit"})}</h5>
-                    </div>
-                    </div>
-                    <div className="carousel-item">
-                    <img src={image2} className="d-block w-100" alt="..."/>
-                    <div className="carousel-caption d-none d-md-block">
-                        <h5>{new Date().toLocaleTimeString([], {hour: '2-digit', minute: "2-digit"})}</h5>
-                    </div>
-                    </div>
-                    <div className="carousel-item">
-                    <img src={image3} className="d-block w-100" alt="..."/>
-                    <div className="carousel-caption d-none d-md-block">
-                        <h5>{new Date().toLocaleTimeString([], {hour: '2-digit', minute: "2-digit"})}</h5>
-                    </div>
+        <div className="row">
+          <div className="col-md-12 mb-3">
+            <div className="card">
+                        <div className="card-body">
+                            <Carousel>
+                                {screenShotData.map((item, index) => {
+                                            return(
+                                                <div key={index}>
+                                                    <img src={item.screenshot} alt="..." />
+                                                    <p className="legend">{item.timeStamp}</p>
+                                                </div>
+                                                )
+                                            })}    
+                            </Carousel>
+                        </div>
                     </div>
                 </div>
-                <button className="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
-                    <span className="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span className="visually-hidden">Previous</span>
-                </button>
-                <button className="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
-                    <span className="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span className="visually-hidden">Next</span>
-                </button>
-            </div>
+            </div>        
         </>
     )
 }
+

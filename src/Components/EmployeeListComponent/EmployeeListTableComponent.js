@@ -6,11 +6,12 @@ import { Link } from 'react-router-dom'
 export default function EmployeeListComponent(props) {
     const [userData, setData] = useState([])
     const apiGet = () => {
-        ApiManager.get("/get-users-list").then((response) => {
+        ApiManager.get("/get-user-list").then((response) => {
             setData(response.data.data)
         })
     }
     useEffect(() => {
+        console.log("Done")
         apiGet();
     }, []);
     
@@ -19,9 +20,6 @@ export default function EmployeeListComponent(props) {
         <div className="row">
           <div className="col-md-12 mb-3">
             <div className="card">
-              <div className="card-header">
-                 <span><i className="bi bi-table me-2"></i></span> Data Table
-                    </div>
                         <div className="card-body">
                             <div className="table-responsive">
                                 <table

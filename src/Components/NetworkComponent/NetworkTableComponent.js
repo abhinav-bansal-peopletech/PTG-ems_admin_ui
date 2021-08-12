@@ -1,14 +1,25 @@
 import React from 'react'
+import { useEffect, useState } from 'react'
+import ApiManager from '../../Api/ApiManager'
 
 export default function NetworkTableComponent() {
+    const [networkData, setNetworkData] = useState([])
+    const apiGet = () => {
+        const request = JSON.stringify({date:"08/07/2021"})
+        ApiManager.get("user-report/6/websites-data", {params: request }).then((response) => {
+            console.log(response.data.data.websiteData)
+            setNetworkData(response.data.data.websiteData)
+        })
+    }
+    useEffect(() => {
+        console.log("Done")
+        apiGet();
+    }, []);
     return (
         <>
         <div className="row">
           <div className="col-md-12 mb-3">
             <div className="card">
-              <div className="card-header">
-                 <span><i className="bi bi-table me-2"></i></span> Data Table
-                    </div>
                         <div className="card-body">
                             <div className="table-responsive">
                                 <table
@@ -23,14 +34,14 @@ export default function NetworkTableComponent() {
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                        <td>www.google.com</td>
-                                        <td>2021-07-19T20:15:00+05:30</td>
-                                        </tr>
-                                        <tr>
-                                        <td>www.facebook.com</td>
-                                        <td>2021-07-19T20:15:00+05:30</td>
-                                        </tr>
+                                    {networkData.map((item, index) => {
+                                                    return(
+                                                        <tr key={index}>
+                                                            <td>{item.website}</td>
+                                                            <td>{item.timeStamp}</td>
+                                                        </tr> 
+                                                    )
+                                            })}
                                     </tbody>
                                 </table>
                             </div>
