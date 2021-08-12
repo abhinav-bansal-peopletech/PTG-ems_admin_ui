@@ -7,17 +7,21 @@ import './CSS/TagCloud.css'
 export default function TagCloudComponent() {
     const [chartData, setChartData] = useState([])
 
-    const chart = () => {
+    const getTagCloudData = () => {
         const request = JSON.stringify({date:"08/07/2021"})
         ApiManager.get("user-report/6/websites-data", {params: request }).then((response) => {
-            console.log(response.data.data.websiteCountData)
-            setChartData(
-                response.data.data.websiteCountData
-            )})     
+            var tagcloudData = []
+            var index;
+            for (index in response.data.data.websiteCountData) {
+                var websiteData = { value: response.data.data.websiteCountData[index].website, count: response.data.data.websiteCountData[index].count }
+                tagcloudData.push(websiteData);
+            }
+            setChartData(tagcloudData)
+        })     
     }
 
     useEffect(() => {
-        chart();
+        getTagCloudData();
     }, [])
 
     return (
@@ -28,7 +32,7 @@ export default function TagCloudComponent() {
                     maxSize={35}
                     tags={chartData}
                     className="simple-cloud"
-                    onClick={tag => alert(`'${tag.website}' Count: ${tag.count}`)}
+                    onClick={tag => alert(`'${tag.value}' Count: ${tag.count}`)}
                 />
             </div>    
         </>
