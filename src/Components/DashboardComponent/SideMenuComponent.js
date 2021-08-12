@@ -28,11 +28,6 @@ import MenuItemComponent from './MenuItemComponent'
             to: '/files'
         },
         {
-            text: 'Clipboard',
-            logo: <i className="bi bi-clipboard"></i>,
-            to: '/clipboard'
-        },
-        {
             text: 'Session',
             logo: <i className="bi bi-binoculars"></i>,
             to: '/session'
