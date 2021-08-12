@@ -7,6 +7,8 @@ import Applications from './Pages/Applications/Applications';
 import Screenshots from './Pages/Screenshots/Screenshots';
 import Files from './Pages/Files/Files';
 import Network from './Pages/Network/Network';
+import Cliboard from './Pages/Clipboard/Cliboard';
+import Session from './Pages/Session/Session';
 import SideMenuComponent from './Components/DashboardComponent/SideMenuComponent';
 import HeaderComponent from './Components/DashboardComponent/HeaderComponent';
 import Login from './Pages/Login/Login';
@@ -32,6 +34,8 @@ function App() {
                   <Route path="/screenshots" component={Screenshots} />
                   <Route path="/files" component={Files} />
                   <Route path="/network" component={Network} />
+                  <Route path="/clipboard" component={Cliboard}/>
+                  <Route path="/Session" component={Session}/>
                 </>
             </Switch>
           </HashRouter> 
