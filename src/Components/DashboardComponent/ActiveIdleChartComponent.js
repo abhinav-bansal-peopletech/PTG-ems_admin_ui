@@ -7,7 +7,7 @@ export default function ActiveIdleChart() {
 
   const [chartData, setChartData] = useState({})
 
-    const chart = () => {
+    const GetActiveIdleChartData = () => {
         let empData = []
         const request = JSON.stringify({date:"08/07/2021"})
 
@@ -35,7 +35,7 @@ export default function ActiveIdleChart() {
     }
 
     useEffect(() => {
-        chart();
+        GetActiveIdleChartData();
     }, [])
 
 const options ={

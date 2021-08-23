@@ -5,14 +5,14 @@ import { Link } from 'react-router-dom'
 
 export default function EmployeeListComponent(props) {
     const [userData, setData] = useState([])
-    const apiGet = () => {
+    const GetEmployeeListTableData = () => {
         ApiManager.get("/get-user-list").then((response) => {
             setData(response.data.data)
         })
     }
     useEffect(() => {
         console.log("Done")
-        apiGet();
+        GetEmployeeListTableData();
     }, []);
     
     return (

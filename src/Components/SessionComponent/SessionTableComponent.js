@@ -4,7 +4,7 @@ import ApiManager from '../../Api/ApiManager'
 
 export default function ApplicationTable(props) {
     const [sessionData, setSessionData] = useState([])
-    const apiGet = () => {
+    const GetSessionData = () => {
         const request = JSON.stringify({date:"08/07/2021"})
         ApiManager.get("user-report/6/session-data", {params: request } ).then((response) => {
             console.log(response.data.data.sessionData)
@@ -13,7 +13,7 @@ export default function ApplicationTable(props) {
     }
     useEffect(() => {
         console.log("Done")
-        apiGet();
+        GetSessionData();
     }, []);
     return (
         <>

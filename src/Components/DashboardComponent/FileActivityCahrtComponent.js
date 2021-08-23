@@ -8,7 +8,7 @@ import './CSS/Chart.css'
 export default function FileActivityChart() {
     const [chartData, setChartData] = useState({})
 
-    const chart = () => {
+    const GetFileActivityChartData = () => {
         let empData = []
         let activityLabel = [] 
         const request = JSON.stringify({date:"08/07/2021"})
@@ -47,7 +47,7 @@ export default function FileActivityChart() {
     }
 
     useEffect(() => {
-        chart();
+        GetFileActivityChartData();
     }, [])
 
     const options={

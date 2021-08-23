@@ -4,7 +4,7 @@ import ApiManager from '../../Api/ApiManager'
 
 export default function ProfileComponent() {
     const [profileData, setProfileData] = useState([])
-    const apiGet = () => {
+    const GetProfileData = () => {
         const request = JSON.stringify({date:"08/07/2021"})
         ApiManager.get("user-report/6/basic-info", {params: request }).then((response) => {
             console.log(response.data.data)
@@ -13,7 +13,7 @@ export default function ProfileComponent() {
     }
     useEffect(() => {
         console.log("Done")
-        apiGet();
+        GetProfileData();
     }, []);
     return (
         <>

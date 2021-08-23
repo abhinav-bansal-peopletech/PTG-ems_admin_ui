@@ -4,7 +4,7 @@ import ApiManager from '../../Api/ApiManager'
 
 export default function NetworkTableComponent() {
     const [networkData, setNetworkData] = useState([])
-    const apiGet = () => {
+    const GetNetworkData = () => {
         const request = JSON.stringify({date:"08/07/2021"})
         ApiManager.get("user-report/6/websites-data", {params: request }).then((response) => {
             console.log(response.data.data.websiteData)
@@ -13,7 +13,7 @@ export default function NetworkTableComponent() {
     }
     useEffect(() => {
         console.log("Done")
-        apiGet();
+        GetNetworkData();
     }, []);
     return (
         <>

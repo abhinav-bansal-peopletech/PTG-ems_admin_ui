@@ -8,7 +8,7 @@ import './CSS/Chart.css'
 export default function ApplicationActivityChart() {
     const [chartData, setChartData] = useState({})
 
-    const chart = () => {
+    const GetApplicationActivityChartData = () => {
         let empData = []
         const request = JSON.stringify({date:"08/07/2021"})
 
@@ -29,7 +29,7 @@ export default function ApplicationActivityChart() {
     }
 
     useEffect(() => {
-        chart();
+        GetApplicationActivityChartData();
     }, [])
 
     const options = {

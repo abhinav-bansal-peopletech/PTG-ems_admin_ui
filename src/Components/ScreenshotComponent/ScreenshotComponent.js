@@ -6,7 +6,7 @@ import ApiManager from '../../Api/ApiManager'
 
 export default function ScreenshotComponent() {
     const [screenShotData, setScreenShotData] = useState([])
-    const apiGet = () => {
+    const GetScreenShotData = () => {
         const request = JSON.stringify({date:"08/07/2021"})
         ApiManager.get("user-report/6/screenshot-data", {params: request } ).then((response) => {
             console.log(response.data.data)
@@ -15,7 +15,7 @@ export default function ScreenshotComponent() {
     }
     useEffect(() => {
         console.log("Done")
-        apiGet();
+        GetScreenShotData();
     }, []);
     return (
         <>

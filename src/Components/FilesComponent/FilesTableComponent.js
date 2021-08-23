@@ -4,7 +4,7 @@ import ApiManager from '../../Api/ApiManager'
 
 export default function FilesTableComponent(props) {
     const [filesData, setFilesData] = useState([])
-    const apiGet = () => {
+    const GetFilesTableData = () => {
         const request = JSON.stringify({date:"08/07/2021"})
         ApiManager.get("user-report/6/files-data", {params: request }).then((response) => {
             console.log(response.data.data.fileData)
@@ -13,7 +13,7 @@ export default function FilesTableComponent(props) {
     }
     useEffect(() => {
         console.log("Done")
-        apiGet();
+        GetFilesTableData();
     }, []);
     return (
         <>

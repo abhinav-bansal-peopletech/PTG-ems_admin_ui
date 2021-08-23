@@ -5,19 +5,19 @@ import ApiManager from '../../Api/ApiManager'
 import './CSS/TagCloud.css'
 
 export default function TagCloudComponent() {
-    const [chartData, setChartData] = useState([])
+    const [tagCloudData, setTagCloudData] = useState([])
 
-    const chart = () => {
+    const GetTagCloudData = () => {
         const request = JSON.stringify({date:"08/07/2021"})
         ApiManager.get("user-report/6/websites-data", {params: request }).then((response) => {
             console.log(response.data.data.websiteCountData)
-            setChartData(
+            setTagCloudData(
                 response.data.data.websiteCountData
             )})     
     }
 
     useEffect(() => {
-        chart();
+        GetTagCloudData();
     }, [])
 
     return (
@@ -26,7 +26,7 @@ export default function TagCloudComponent() {
                 <TagCloud
                     minSize={12}
                     maxSize={35}
-                    tags={chartData}
+                    tags={tagCloudData}
                     className="simple-cloud"
                     onClick={tag => alert(`'${tag.website}' Count: ${tag.count}`)}
                 />

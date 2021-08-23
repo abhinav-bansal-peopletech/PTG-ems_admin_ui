@@ -7,8 +7,8 @@ import { useEffect, useState } from 'react'
 import ApiManager from '../../Api/ApiManager'
 
 function Dashboard() {
-  const [aiData, setAIData] = useState([])
-    const apiGet = () => {
+  const [activeIdleData, setAIData] = useState([])
+    const GetActiveIdleData = () => {
         const request = JSON.stringify({date:"08/07/2021"})
         ApiManager.get("user-report/6/session-data", {params: request }).then((response) => {
             console.log(response.data.data)
@@ -17,7 +17,7 @@ function Dashboard() {
     }
     useEffect(() => {
         console.log("Done")
-        apiGet();
+        GetActiveIdleData();
     }, []);
 
   return (
@@ -41,14 +41,14 @@ function Dashboard() {
                   <div className="card bg-primary text-dark mb-3">
                     <div className="card-body py-5">
                         <h5 className="card-title text-center">Productive Time</h5>
-                        <p className="card-text text-center">{aiData.activeHoursCountData} Hours</p>
+                        <p className="card-text text-center">{activeIdleData.activeHoursCountData} Hours</p>
                     </div>
                   </div>
 
                   <div className="card bg-danger text-dark">
                     <div className="card-body py-5">
                         <h5 className="card-title text-center" >Idle Time</h5>
-                        <p className="card-text text-center">{aiData.idleHoursCountData} Hours</p>
+                        <p className="card-text text-center">{activeIdleData.idleHoursCountData} Hours</p>
                     </div>
                   </div>
                 </div>
